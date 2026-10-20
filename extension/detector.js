@@ -3,7 +3,7 @@
 
     const mappings = globalThis.AntiHomographMappings;
     if (!mappings || Object.keys(mappings).length !== 1407) {
-        throw new Error("Anti-Homograh Extension: missing or incomplete Unicode policy");
+        throw new Error("Anti-Homograph Extension: missing or incomplete Unicode policy");
     }
 
     // RFC 3492 Bootstring parameters for Punycode.

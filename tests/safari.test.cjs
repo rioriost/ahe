@@ -171,6 +171,18 @@ test("top-frame warning mounts at document_start, with isolated text and working
     }
 });
 
+test("repeated injection neither duplicates nor restores a dismissed warning", () => {
+    const { sandbox, document } = uiContext();
+    vm.runInContext(read("content.js"), sandbox);
+    vm.runInContext(read("content.js"), sandbox);
+    assert.equal(document.documentElement.children.length, 1);
+    const host = document.documentElement.children[0];
+    descendants(host.testShadow).find(node => node.tagName === "button").listeners.click();
+    vm.runInContext(read("content.js"), sandbox);
+    assert.equal(document.documentElement.children.length, 1);
+    assert.equal(host.removed, true);
+});
+
 test("banner waits for the document element and disconnects its observer", () => {
     const { sandbox, document, observer } = uiContext({ hasRoot: false });
     vm.runInContext(read("content.js"), sandbox);

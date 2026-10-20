@@ -74,7 +74,7 @@ final class SafariWebKitChecks: NSObject, WKNavigationDelegate {
                     \(scripts)
                     """, injectionTime: .atDocumentStart, forMainFrameOnly: true))
             }
-            let frame = NSRect(x: 0, y: 0, width: scenario.banner ? 800 : 360, height: 900)
+            let frame = NSRect(x: 0, y: 0, width: scenario.banner ? 800 : 360 * scenario.zoom, height: 900 * (scenario.banner ? 1 : scenario.zoom))
             webView = WKWebView(frame: frame, configuration: configuration)
             webView.navigationDelegate = self
             webView.pageZoom = scenario.zoom

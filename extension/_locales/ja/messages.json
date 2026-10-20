@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "Anti-Homograh Extension" },
+  "extensionName": { "message": "Anti-Homograph Extension" },
   "extensionDescription": { "message": "英字に似た別の文字がドメイン名に含まれる場合に警告します。Unicodeデータを使い、端末内で判定します。" },
   "warningTitle": { "message": "ドメイン名に英字と紛らわしい文字があります" },
   "warningBody": { "message": "このアドレスには英字に似た別の文字、または不正なPunycodeラベルが含まれています。パスワードや支払い情報を入力する前に、アドレスを確認してください。" },

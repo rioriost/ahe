@@ -1,4 +1,4 @@
-# Anti-Homograh Extension
+# Anti-Homograph Extension
 
 [English](README.md) | [日本語](README-ja.md)
 
@@ -54,9 +54,10 @@ To generate a macOS host app, install Xcode and run from the repository root:
 
 ```sh
 sh scripts/package_safari.sh
+python3 scripts/prepare_appstore.py
 xcodebuild \
-  -project 'build/safari/Anti-Homograh Extension/Anti-Homograh Extension.xcodeproj' \
-  -scheme 'Anti-Homograh Extension' -configuration Debug \
+  -project 'build/safari/Anti-Homograph Extension/Anti-Homograph Extension.xcodeproj' \
+  -scheme 'Anti-Homograph Extension' -configuration Debug \
   -destination 'platform=macOS,arch=arm64' \
   -derivedDataPath build/safari-derived CODE_SIGNING_ALLOWED=NO build
 ```

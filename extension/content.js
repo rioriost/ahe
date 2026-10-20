@@ -5,6 +5,11 @@
     const result = AntiHomograph.analyzeURL(location.href);
     if (result.status !== "warning") return;
 
+    // Safari may inject again after website access changes. Keep dismissal scoped
+    // to this document in the extension isolated world, without page storage.
+    if (globalThis.__aheWarningDocument === document) return;
+    globalThis.__aheWarningDocument = document;
+
     const { message, element, render } = AntiHomographUI;
     const host = document.createElement("aside");
     // Isolate site styling, not trust: a hostile page can still remove this host.

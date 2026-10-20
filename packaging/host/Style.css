@@ -1,0 +1,8 @@
+:root { color-scheme: light dark; font: 15px -apple-system, system-ui, sans-serif; }
+body { margin: 0; background: Canvas; color: CanvasText; }
+main { max-width: 540px; margin: 24px auto; padding: 0 28px 28px; }
+img { display:block; margin:auto; }
+h1 { font-size:24px; text-align:center; } h2 { font-size:17px; margin-top:28px; }
+p { line-height:1.6; } button { font:inherit; padding:8px 16px; }
+a { color: LinkText; } :focus-visible { outline:3px solid Highlight; outline-offset:4px; }
+#state { font-weight:600; } #privacy { font-size:13px; }

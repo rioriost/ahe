@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "Anti-Homograh Extension" },
+  "extensionName": { "message": "Anti-Homograph Extension" },
   "extensionDescription": { "message": "Warns about non-ASCII domain characters that resemble ASCII letters. Checks locally using Unicode data." },
   "warningTitle": { "message": "Look-alike characters in this domain" },
   "warningBody": { "message": "This address contains characters that resemble English letters, or an invalid Punycode label. Verify the address before entering passwords or payment details." },

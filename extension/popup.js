@@ -10,7 +10,7 @@
         const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
         result = tab?.url ? AntiHomograph.analyzeURL(tab.url) : { status: "error" };
     } catch (error) {
-        console.error("Anti-Homograh Extension: unable to inspect the active tab", error);
+        console.error("Anti-Homograph Extension: unable to inspect the active tab", error);
         result = { status: "error" };
     }
     container.replaceChildren();
