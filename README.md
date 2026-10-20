@@ -112,7 +112,7 @@ notarization, App Review, or App Store distribution.
 
 Temporary unsigned loading is a development/testing route, not persistent
 ordinary-user distribution. The macOS 0.1.0 build 3 was submitted to App Review on October 20, 2026.
-Submission is not approval or publication. The iOS platform is prepared separately.
+Submission is not approval or publication. The iOS 0.1.0 build 5 was submitted on the same day and is waiting for review.
 
 ## Privacy and limits
 

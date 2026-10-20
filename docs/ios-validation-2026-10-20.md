@@ -47,3 +47,9 @@ App Review submission and approval are separate from the technical checks above.
 
 HIG is design guidance. Availability of the settings shortcut is guarded using the
 SDK's iOS 26.2 availability declaration. Review requirements were checked separately.
+
+## Submission
+
+iOS 0.1.0 (5) was submitted on October 20, 2026 at 10:06 JST after user confirmation.
+App Store Connect reports Waiting for Review. Release remains manual after approval.
+This is a submission receipt, not App Review approval.
