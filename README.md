@@ -38,10 +38,12 @@ techniques are outside this policy.
 
 The macOS distribution target is Apple Silicon and macOS 27 or later.
 The iPhone/iPad host targets iOS/iPadOS 17 or later. Runtime checks cover Safari
-on macOS 27 and iOS/iPadOS 27 simulators; minimum-version devices and physical
-iOS devices have not been verified. This repository provides source code.
+on macOS 27 and iOS/iPadOS 27 simulators. Installation and launch of the
+development-signed app were also confirmed on an iPhone 17 Pro running iOS 27.0.1.
+Warning behavior on physical devices and minimum-version devices has not been
+verified. This repository provides source code.
 
-On Safari versions offering **Settings > Developer > Add Temporary Extension**,
+On macOS Safari versions offering **Settings > Developer > Add Temporary Extension**,
 select the repository's `extension` folder. Follow the unsigned-extension
 authentication prompt, enable the extension, and grant website access.
 Temporary extensions disappear when Safari quits or after 24 hours.
@@ -87,17 +89,28 @@ xcodebuild \
 ```
 
 The native setup screen supports English/Japanese, Dynamic Type, and system
-appearance. Enable AHE in Settings > Apps > Safari > Extensions (iOS 17:
-Settings > Safari > Extensions), then grant website access from Safari's page
-menu. On iOS 26.2 or later, the setup screen offers Apple's extension-settings
-shortcut. If Settings opens its root on first launch, use the displayed manual
-path. App Store delivery requires a signed iOS archive uploaded to the iOS
+appearance. After installing the containing app, enable AHE directly in Safari:
+
+1. Open a webpage in Safari and open the page menu in the address bar.
+2. Choose **Add Extensions** and enable **Anti-Homograph Extension**.
+3. Grant access to the websites you want checked.
+
+This enables an extension whose app is already installed; it is separate from
+browsing the App Store for new extensions. If you installed the development app
+through Xcode, you do not need to wait for App Review or App Store publication.
+
+Alternatively, enable AHE in Settings > Apps > Safari > Extensions (iOS 17:
+Settings > Safari > Extensions). On iOS 26.2 or later, the setup screen offers
+Apple's extension-settings shortcut. If Settings opens its root on first launch,
+use the Safari steps above or navigate through Settings manually.
+
+App Store delivery requires a signed iOS archive uploaded to the iOS
 platform of the same App Store Connect record. macOS uploads do not install on iOS.
 
 ## Distribution: GitHub is not the Safari extension catalog
 
-To make the extension available through Safari's normal **Safari Extensions /
-More Extensions** App Store entry point, enroll in the Apple Developer Program,
+To make the app discoverable and installable through Safari's App Store
+extension catalog, enroll in the Apple Developer Program,
 create an app record in App Store Connect, upload the extension's containing
 app, and submit it for App Review and publication. Uploading alone does not
 publish it. Apple's Safari Web Extension Packager in App Store Connect can also
