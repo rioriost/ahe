@@ -171,6 +171,26 @@ test("top-frame warning mounts at document_start, with isolated text and working
     }
 });
 
+test("mobile desktop-layout warnings stay readable without undoing user zoom-in", () => {
+    const { sandbox, document } = uiContext();
+    let resize;
+    let removed = false;
+    sandbox.window.visualViewport = {
+        scale: 0.4,
+        addEventListener(event, handler) { assert.equal(event, "resize"); resize = handler; },
+        removeEventListener(event, handler) { removed = event === "resize" && handler === resize; },
+    };
+    vm.runInContext(read("content.js"), sandbox);
+    const host = document.documentElement.children[0];
+    const section = descendants(host.testShadow).find(node => node.tagName === "section");
+    assert.equal(section.style.fontSize, "40px");
+    sandbox.window.visualViewport.scale = 2;
+    resize();
+    assert.equal(section.style.fontSize, "16px");
+    descendants(host.testShadow).find(node => node.tagName === "button").listeners.click();
+    assert.equal(removed, true);
+});
+
 test("repeated injection neither duplicates nor restores a dismissed warning", () => {
     const { sandbox, document } = uiContext();
     vm.runInContext(read("content.js"), sandbox);

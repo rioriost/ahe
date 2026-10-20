@@ -21,15 +21,15 @@
     style.textContent = `
         :host { color-scheme: light dark; }
         section { box-sizing: border-box; background: #fff8eb; color: #25221d;
-            border: 3px solid #956000; padding: 20px; font: 16px/1.5 system-ui, sans-serif;
-            text-align: start; overflow-wrap: anywhere; }
+            border: 3px solid #956000; padding: 1.25em; font: 16px/1.5 system-ui, sans-serif;
+            text-align: start; overflow-wrap: anywhere; -webkit-text-size-adjust: 100%; }
         h1 { font-size: 1.15em; margin: 0 0 8px; }
         p, dl, ul { margin: 8px 0; }
         dt { font-weight: 600; } dd { margin: 0 0 4px; font-family: ui-monospace, monospace; }
         ul { padding-inline-start: 24px; }
         .note { font-size: .875em; }
-        nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-        button { font: inherit; padding: 8px 16px; min-height: 44px; border-radius: 6px;
+        nav { display: flex; flex-wrap: wrap; gap: .75em; margin-top: 1em; }
+        button { font: inherit; padding: .5em 1em; min-height: 2.75em; border-radius: 6px;
             border: 1px solid #625e56; background: #fff; color: #25221d; cursor: pointer; }
         button.primary { background: #25221d; color: #fff; }
         button:focus-visible { outline: 3px solid #0067c0; outline-offset: 3px; }
@@ -44,6 +44,14 @@
         }
     `;
     const section = element("section");
+    // Desktop-layout pages can start zoomed out on iOS. Keep the warning legible,
+    // while still allowing user zoom-in to enlarge it. Never change the site's viewport.
+    const updateScale = () => {
+        const scale = window.visualViewport?.scale || 1;
+        section.style.fontSize = `${16 * Math.max(1, 1 / scale)}px`;
+    };
+    updateScale();
+    window.visualViewport?.addEventListener("resize", updateScale);
     section.lang = browser.i18n.getUILanguage();
     section.setAttribute("aria-label", message("extensionName"));
     const title = render(section, result);
@@ -54,7 +62,10 @@
     const dismiss = element("button", message("dismissButton"));
     const leave = element("button", message("leaveButton"), "primary");
     dismiss.type = leave.type = "button";
-    dismiss.addEventListener("click", () => host.remove());
+    dismiss.addEventListener("click", () => {
+        window.visualViewport?.removeEventListener("resize", updateScale);
+        host.remove();
+    });
     leave.addEventListener("click", () => location.replace("about:blank"));
     actions.append(dismiss, leave);
     section.append(actions);

@@ -2,7 +2,7 @@
 
 [English](README.md) | [日本語](README-ja.md)
 
-**AHE** is a standalone macOS Safari Web Extension that warns about non-ASCII
+**AHE** is a standalone Safari Web Extension for macOS, iPhone, and iPad that warns about non-ASCII
 domain characters resembling ASCII letters. Code, artwork, and documentation
 are MIT-licensed. Unicode data retains its separate Unicode license.
 
@@ -27,7 +27,7 @@ Malformed or non-canonical Punycode labels also trigger warnings.
 A banner shows the actual Punycode domain, Unicode display, and matching
 characters. “Leave this page” replaces the page with `about:blank`.
 Dismissing the banner lasts only for the current document; there is no allowlist.
-The Safari toolbar popup independently checks the current address.
+The Safari toolbar popup (page menu on iPhone/iPad) independently checks the current address.
 Japanese and English are supported, with light and dark appearance.
 
 **This warns; it does not block connections or certify site safety.** Legitimate
@@ -36,9 +36,10 @@ techniques are outside this policy.
 
 ## Install for development
 
-The initial target is macOS Safari 27. Older Safari versions and iOS have not
-been verified. This repository is source code, not an App Store listing or
-a signed/notarized application release.
+The macOS distribution target is Apple Silicon and macOS 27 or later.
+The iPhone/iPad host targets iOS/iPadOS 17 or later. Runtime checks cover Safari
+on macOS 27 and iOS/iPadOS 27 simulators; minimum-version devices and physical
+iOS devices have not been verified. This repository provides source code.
 
 On Safari versions offering **Settings > Developer > Add Temporary Extension**,
 select the repository's `extension` folder. Follow the unsigned-extension
@@ -72,6 +73,27 @@ the original extension resources: edits require rebuilding, while adding or
 removing files requires regenerating the project. Use your own developer team
 and appropriate bundle identifier for signed distribution.
 
+## iPhone and iPad
+
+Generate the separate iOS containing app from the same extension resources:
+
+```sh
+sh scripts/package_ios.sh
+xcodebuild \
+  -project 'build/safari-ios/Anti-Homograph Extension/Anti-Homograph Extension.xcodeproj' \
+  -scheme 'Anti-Homograph Extension' -configuration Debug \
+  -destination 'generic/platform=iOS Simulator' \
+  -derivedDataPath build/ios-derived CODE_SIGNING_ALLOWED=NO build
+```
+
+The native setup screen supports English/Japanese, Dynamic Type, and system
+appearance. Enable AHE in Settings > Apps > Safari > Extensions (iOS 17:
+Settings > Safari > Extensions), then grant website access from Safari's page
+menu. On iOS 26.2 or later, the setup screen offers Apple's extension-settings
+shortcut. If Settings opens its root on first launch, use the displayed manual
+path. App Store delivery requires a signed iOS archive uploaded to the iOS
+platform of the same App Store Connect record. macOS uploads do not install on iOS.
+
 ## Distribution: GitHub is not the Safari extension catalog
 
 To make the extension available through Safari's normal **Safari Extensions /
@@ -89,8 +111,8 @@ App Store extension catalog. Publishing MIT source does not provide signing,
 notarization, App Review, or App Store distribution.
 
 Temporary unsigned loading is a development/testing route, not persistent
-ordinary-user distribution. No App Store submission, signing, or notarization
-has been performed for this repository.
+ordinary-user distribution. The macOS 0.1.0 build 3 was submitted to App Review on October 20, 2026.
+Submission is not approval or publication. The iOS platform is prepared separately.
 
 ## Privacy and limits
 

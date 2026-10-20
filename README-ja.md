@@ -3,7 +3,7 @@
 [English](README.md) | [日本語](README-ja.md)
 
 **AHE** は、ドメイン名に英字と紛らわしい別の文字が含まれると警告する、
-macOSのSafari向け拡張機能です。コード、独自のアイコン、文書はMITライセンスで公開しています。
+macOS・iPhone・iPadのSafari向け拡張機能です。コード、独自のアイコン、文書はMITライセンスで公開しています。
 Unicodeデータには別途Unicodeのライセンスが適用されます。
 
 [unbound-anti-homograph](https://github.com/rioriost/unbound-anti-homograph) と同じ文字の判定条件を使いますが、
@@ -35,8 +35,10 @@ ASCII文字だけの偽装など、判定対象外のフィッシング手法も
 
 ## 開発用として読み込む
 
-初期の対象はmacOSのSafari 27です。旧版SafariとiOSは未確認です。
-このリポジトリで公開しているのはソースコードであり、App Store掲載版や署名・公証済みアプリではありません。
+macOS版の配布対象はApple Silicon搭載MacとmacOS 27以降です。
+iPhone・iPad版はiOS／iPadOS 17以降を対象にしています。
+動作確認はmacOS 27のSafariとiOS／iPadOS 27のシミュレータで行っています。
+iOSの実機と最小対応OSでの検証は未実施です。このリポジトリではソースコードを公開しています。
 
 Safariの「設定 > デベロッパ」に「一時的な機能拡張を追加」がある場合は、
 リポジトリの `extension` フォルダを選んでください。
@@ -70,6 +72,20 @@ Intel Macでは `-destination` の指定を省いてください。
 ファイルの追加・削除時はプロジェクトを生成し直してください。
 署名して配布する際は、開発チームと適切なBundle Identifierを設定します。
 
+## iPhone・iPad版
+
+`sh scripts/package_ios.sh` で、共通の拡張機能を含むiOS用プロジェクトを生成します。
+ビルド手順は[英語版README](README.md#iphone-and-ipad)を参照してください。
+
+ネイティブの設定案内画面は日本語・英語、文字サイズの変更、明暗の表示に対応します。
+「設定 ＞ アプリ ＞ Safari ＞ 機能拡張」でAHEを有効にし、Safariのページメニューで
+検査するWebサイトへのアクセスを許可してください。iOS 17では「設定 ＞ Safari」です。
+iOS 26.2以降では案内画面から機能拡張設定を開けます。設定アプリの初回起動時に
+先頭画面が開く場合は、表示している手順で移動してください。
+
+App Storeで配布するには、同じApp Store ConnectのアプリにiOSプラットフォームを追加し、
+署名したiOS用ビルドをアップロードして審査へ提出します。macOS用ビルドだけではiOSに配布できません。
+
 ## 通常のインストール導線にはApp Storeでの公開が必要
 
 Safariの「Safari機能拡張」「その他の機能拡張」などから一般ユーザーに見つけてもらい、
@@ -86,7 +102,8 @@ macOSでは、**Developer IDで署名し、公証したアプリをApp Storeの�
 
 GitHubでMITのソースコードを公開しても、署名、公証、App Review、App Store掲載は自動では行われません。
 未署名の一時読み込みは開発・検証用であり、一般ユーザー向けの継続的な配布とは別です。
-このプロジェクトではApp Storeへの申請、署名、公証はまだ行っていません。
+macOS版0.1.0（ビルド3）は2026年10月20日にApp Reviewへ提出しました。
+提出は承認や公開の完了を意味しません。iOS版は別のプラットフォームとして準備します。
 
 ## 閲覧情報を保存せず、通信は遮断しない
 

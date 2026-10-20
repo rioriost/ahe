@@ -7,6 +7,10 @@
 /* Safari derives the popover width from the document, before a viewport exists. */
 html { width: 360px; }
 body { margin: 0; width: 360px; max-width: 100%; }
+/* Fill iPhone's sheet, while preserving iPad's intrinsic popover width. */
+@media (pointer: coarse) {
+    html, body { width: 100%; min-width: 360px; }
+}
 main { padding: 20px; overflow-wrap: anywhere; }
 h1 { font-size: 1.2rem; line-height: 1.35; margin: 0 0 12px; }
 p, dl, ul { margin: 12px 0; }
