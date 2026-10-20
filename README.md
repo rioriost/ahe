@@ -104,29 +104,6 @@ Settings > Safari > Extensions). On iOS 26.2 or later, the setup screen offers
 Apple's extension-settings shortcut. If Settings opens its root on first launch,
 use the Safari steps above or navigate through Settings manually.
 
-App Store delivery requires a signed iOS archive uploaded to the iOS
-platform of the same App Store Connect record. macOS uploads do not install on iOS.
-
-## Distribution: GitHub is not the Safari extension catalog
-
-To make the app discoverable and installable through Safari's App Store
-extension catalog, enroll in the Apple Developer Program,
-create an app record in App Store Connect, upload the extension's containing
-app, and submit it for App Review and publication. Uploading alone does not
-publish it. Apple's Safari Web Extension Packager in App Store Connect can also
-package uploaded extension resources without Xcode.
-
-For macOS distribution outside the Mac App Store, Apple supports a containing
-app signed with a **Developer ID and notarized**. That app can be distributed
-through GitHub Releases or a website without an App Store listing. Users install
-the app and enable its extension in Safari; it is not discovered through the
-App Store extension catalog. Publishing MIT source does not provide signing,
-notarization, App Review, or App Store distribution.
-
-Temporary unsigned loading is a development/testing route, not persistent
-ordinary-user distribution. The macOS 0.1.0 build 3 was submitted to App Review on October 20, 2026.
-Submission is not approval or publication. The iOS 0.1.0 build 5 was submitted on the same day and is waiting for review.
-
 ## Privacy and limits
 
 The extension makes no network requests and uses no telemetry, background
