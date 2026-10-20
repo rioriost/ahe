@@ -1,0 +1,16 @@
+Anti-Homograh Extension
+Copyright (c) 2026 Rio Fujita
+
+The extension code, original shield artwork, build scripts, tests, and
+documentation are licensed under the MIT License; see LICENSE.
+
+The detection policy originated in:
+https://github.com/rioriost/unbound-anti-homograph
+This is a standalone Safari extension. It does not include or require Unbound.
+
+extension/confusables.js contains a derived Unicode 17.0.0 data table.
+Unicode data is Copyright Unicode, Inc. and is not relicensed under MIT.
+See LICENSES/Unicode-3.0.txt and extension/UNICODE-LICENSE.txt.
+The official source commit and SHA-256 are pinned in
+scripts/build_safari_data.py. Distributions must retain both the MIT
+and Unicode license notices.
