@@ -51,7 +51,12 @@ requested manual release. No pricing, territory, or compatibility options were c
 
 Build 6 finished processing and was selected and saved in the iOS version.
 Build ID: c692eee6-77cc-4d1a-b385-15cd23063b08. App Store Connect accepted Update Review and shows 0.1.0 (6) Ready for Review.
-Final resubmission awaits user confirmation; no new review submission receipt yet.
+After action-time user confirmation, build 6 was resubmitted on October 21, 2026
+at 14:51 JST. App Store Connect reports Waiting for Review for iOS 0.1.0 (6).
+Submission ID: a92cfb55-2ef1-43bb-a2f7-440d8d762710.
+https://appstoreconnect.apple.com/apps/6824717064/distribution/reviewsubmissions/details/a92cfb55-2ef1-43bb-a2f7-440d8d762710
+Local evidence: build/appstore-ios/resubmitted-2026-10-21.png.
+Release remains manual after approval. This receipt confirms submission, not approval.
 
 ## Official sources
 
